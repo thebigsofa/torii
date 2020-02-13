@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  # RABBITMQ
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: bigsofa-rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      - "RABBITMQ_DEFAULT_PASS=pass"
+      - "RABBITMQ_DEFAULT_USER=user"
+    networks:
+      torii:
+        aliases:
+          - torii-rabbitmq
+
+  # TORII
+  bigsofa-torii:
+    build: .
+    container_name: bigsofa-torii
+    command: bundle exec rails s -p 3006 -b '0.0.0.0'
+    volumes:
+      - .:/torii
+    ports:
+      - "3006:3006"
+    depends_on:
+      - rabbitmq
+    networks:
+      torii:
+        aliases:
+          - torii-rails
+
+networks:
+  torii:
+    external:
+      name: torii
