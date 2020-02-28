@@ -1,7 +1,5 @@
 FROM ruby:2.5.1
 
-RUN apt-get update -qq
-
 RUN mkdir -p /torii
 WORKDIR /torii
 COPY Gemfile Gemfile.lock ./
@@ -11,6 +9,6 @@ RUN gem install bundler -v 2.1.4 && \
 
 COPY . /torii
 
-EXPOSE 3006
+EXPOSE 3000
 
-CMD ["bundle", "exec", "rails", "server", -p, "3006", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "server", -p, "3000", "-b", "0.0.0.0"]

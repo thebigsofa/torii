@@ -20,11 +20,10 @@ services:
   bigsofa-torii:
     build: .
     container_name: bigsofa-torii
-    command: bundle exec rails s -p 3006 -b '0.0.0.0'
     volumes:
       - .:/torii
     ports:
-      - "3006:3006"
+      - "3006:3000"
     depends_on:
       - rabbitmq
     networks:
