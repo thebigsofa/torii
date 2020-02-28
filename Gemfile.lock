@@ -57,20 +57,20 @@ GEM
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2)
     amq-protocol (2.3.0)
-    bootsnap (1.4.5)
+    bootsnap (1.4.6)
       msgpack (~> 1.0)
     builder (3.2.4)
-    bunny (2.14.3)
+    bunny (2.14.4)
       amq-protocol (~> 2.3, >= 2.3.0)
     byebug (11.1.1)
     cerber (0.1.2)
       jwt (= 2.1.0)
     coderay (1.1.2)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.6)
     crass (1.0.6)
     diff-lcs (1.3)
     erubi (1.9.0)
-    ffi (1.12.1)
+    ffi (1.12.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.2)
@@ -92,16 +92,16 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.0)
-    msgpack (1.3.1)
+    msgpack (1.3.3)
     nio4r (2.5.2)
-    nokogiri (1.10.7)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    puma (4.3.1)
+    puma (4.3.3)
       nio4r (~> 2.0)
-    rack (2.1.2)
+    rack (2.2.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.0.2.1)
@@ -188,7 +188,7 @@ DEPENDENCIES
   tzinfo-data
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.6.3p62
 
 BUNDLED WITH
-   1.17.3
+   2.1.4

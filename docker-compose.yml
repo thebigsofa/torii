@@ -12,7 +12,7 @@ services:
       - "RABBITMQ_DEFAULT_PASS=pass"
       - "RABBITMQ_DEFAULT_USER=user"
     networks:
-      torii:
+      platform:
         aliases:
           - torii-rabbitmq
 
@@ -24,14 +24,18 @@ services:
       - .:/torii
     ports:
       - "3006:3000"
+    environment:
+      - QUEUE_HOST=torii-rabbitmq
+      - USER=user"
+      - PASS=pass
     depends_on:
       - rabbitmq
     networks:
-      torii:
+      platform:
         aliases:
           - torii-rails
 
 networks:
-  torii:
+  platform:
     external:
-      name: torii
+      name: platform

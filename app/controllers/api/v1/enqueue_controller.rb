@@ -2,7 +2,8 @@ module Api
   module V1
     class EnqueueController < ApplicationController
       def enqueue
-        conn = Bunny.new(host: "torii-rabbitmq", user: "user", password: "pass")
+     #  conn = Bunny.new(host: "torii-rabbitmq", user: "user", password: "pass")
+        conn = Bunny.new(host: ENV["QUEUE_HOST"], user: ENV["user"], password: ENV["pass"])
         conn.start
 
         channel = conn.create_channel
