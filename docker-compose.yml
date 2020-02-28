@@ -20,13 +20,11 @@ services:
   bigsofa-torii:
     build: .
     container_name: bigsofa-torii
-    volumes:
-      - .:/torii
     ports:
       - "3006:3000"
     environment:
       - QUEUE_HOST=torii-rabbitmq
-      - USER=user"
+      - USER=user
       - PASS=pass
     depends_on:
       - rabbitmq
