@@ -3,20 +3,18 @@ module Api
     class EnqueueController < ApplicationController
       def enqueue
      #  conn = Bunny.new(host: "torii-rabbitmq", user: "user", password: "pass")
-        conn = Bunny.new(host: ENV["QUEUE_HOST"], user: ENV["user"], password: ENV["pass"])
+        conn = Bunny.new(host: ENV["QUEUE_HOST"], user: ENV["QUEUE_USER"], password: ENV["QUEUE_PASS"], automatically_recover: false )
         conn.start
 
         channel = conn.create_channel
-        exchange = channel.topic(topic)
+        queue = channel.queue(queue_name, durable: true)
 
-        exchange.publish(
+        queue.publish(
           payload.to_json,
-          routing_key: routing_key,
           content_type: "application/json"
         )
 
         conn.close
-
         render json: { status: 200, message: "ok" }
       end
 
@@ -26,12 +24,8 @@ module Api
         @payload ||= params["payload"]
       end
 
-      def routing_key
-        @routing_key ||= params["routing_key"]
-      end
-
-      def topic
-        @topic ||= params["topic"]
+      def queue_name
+        @queue_name  ||= params["queue"]
       end
     end
   end
